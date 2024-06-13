@@ -100,4 +100,17 @@ public class RegressApiTests extends TestBase {
                 .log().body()
                 .statusCode(404);
     }
+
+    @Test
+    public void deleteUserTest() {
+
+        given()
+                .log().all()
+                .when()
+                .delete("api/users/2")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(204);
+    }
 }
