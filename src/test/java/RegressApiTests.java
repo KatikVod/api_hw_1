@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -7,6 +8,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class RegressApiTests extends TestBase {
     @Test
+    @DisplayName("Успешная регистрация пользователя")
     void successfulRegistrationTest() {
         String registrationData = "{\"email\": \"eve.holt@reqres.in\", \"password\": \"pistol\"}";
 
@@ -24,6 +26,7 @@ public class RegressApiTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Регистрация пользователя без пароля")
     void registrationWithoutPasswordTest() {
         String registrationData = "{\"email\": \"john.holt@reqres.in\"}";
 
@@ -41,6 +44,7 @@ public class RegressApiTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Регистрация пользователя без email")
     void registrationWithoutEmailTest() {
         String registrationData = "{\"password\": \"mypassword\"}";
 
@@ -58,6 +62,7 @@ public class RegressApiTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Регистрация пользователя с некорректным email")
     void registrationWithWrongEmailTest() {
         String registrationData = "{\"email\": \"1\", \"password\": \"pass\"}";
 
@@ -75,6 +80,7 @@ public class RegressApiTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Успешное получение пользователя по id")
     void getSingleUserTest() {
 
         given()
@@ -89,6 +95,7 @@ public class RegressApiTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Неуспешное получение пользователя по id")
     void getNonexistentUserTest() {
 
         given()
@@ -102,6 +109,7 @@ public class RegressApiTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Успешное удаление пользователя")
     public void deleteUserTest() {
 
         given()
